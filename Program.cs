@@ -8,7 +8,7 @@ namespace Projeto_xadrezConsole
     {
         static void Main(string[] args)
         {
-            try{
+            /*try{
                 Tabuleiro tabuleiro = new Tabuleiro(8, 8);
 
                 tabuleiro.ColocarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(0, 0));
@@ -21,7 +21,15 @@ namespace Projeto_xadrezConsole
             }
             catch(TabuleiroException exception){
                 System.Console.WriteLine(exception.Message);
-            }
+            }*/
+
+            PosicaoXadrez pos = new PosicaoXadrez('c', 7);
+
+            System.Console.WriteLine(pos);
+
+            System.Console.WriteLine(pos.ToPosicao());
+
+            Console.ReadLine();
             
         }
     }
