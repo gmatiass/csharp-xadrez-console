@@ -9,30 +9,28 @@ namespace Projeto_xadrezConsole
         static void Main(string[] args)
         {
             try{
-                Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+                PartidaXadrez partida = new PartidaXadrez();
 
-                tabuleiro.ColocarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(0, 0));
-                tabuleiro.ColocarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(1, 3));
-                tabuleiro.ColocarPeca(new Rei(Cor.Preta, tabuleiro), new Posicao(2, 1));
+                while(!partida.Terminada)
+                {
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.Tabuleiro);
 
-                tabuleiro.ColocarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(3, 5));
+                    System.Console.WriteLine();
+                    System.Console.Write("Origem: ");;
+                    Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                    System.Console.Write("Destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
 
-                Tela.ImprimirTabuleiro(tabuleiro);
+                    partida.ExecutaMovimento(origem, destino);
+                }
+                
 
-                Console.ReadLine();
             }
             catch(TabuleiroException exception){
                 System.Console.WriteLine(exception.Message);
             }
-
-            //PosicaoXadrez pos = new PosicaoXadrez('c', 7);
-
-            //System.Console.WriteLine(pos);
-
-            //System.Console.WriteLine(pos.ToPosicao());
-
-            Console.ReadLine();
-            
+            Console.ReadLine();           
         }
     }
 }
